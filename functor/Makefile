@@ -16,7 +16,6 @@ all: ${BINS}
 %: %.o
 		@echo "Checking.."
 		${CC} ${LINKERFLAG} $< -o $@
-
 %.o: %.cpp
 		@echo "Creating object.."
 		${CC} -c   -std=c++17 $<
