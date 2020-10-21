@@ -1,6 +1,7 @@
 #include <iostream>
 #include <vector>
 #include <math.h> 
+#include <memory>
 
 
 class JumboClass{
@@ -30,6 +31,9 @@ int main(int argc, char** argv){
 	int x   = (argc >= 2)? strtol(argv[1],NULL,10) :  2;
 	int idx = (argc >= 3)? strtol(argv[2],NULL,10) :  2;
 	int result;
+	
+
+
 	try{
 		result = fancy_function(x,idx);
 		std::cout<<"Succesfully finished with no exception :) \n";
@@ -40,6 +44,6 @@ int main(int argc, char** argv){
 	catch (std::out_of_range &e){
 		std::cout<<"Caught exception:: "<< e.what() << "\n";
 	}
-	std::cout <<"Result :"<< result <<"\n"
-			  << "Happy end :-)\n";
+	
+	
 }
