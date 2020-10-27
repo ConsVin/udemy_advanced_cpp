@@ -1,0 +1,19 @@
+ Hello world! 
+123
+Precision set to 2
+45
+55
+63
+Precision set to 6
+44.7214
+54.7723
+63.2456
+Precision set to 10
+44.72135955
+54.77225575
+63.2455532
+Precision set to 14
+44.721359549996
+54.772255750517
+63.245553203368
+END
