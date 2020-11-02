@@ -15,10 +15,10 @@ all: ${BINS}
 
 %: %.o
 		@echo "Checking.."
-		${CC} ${LINKERFLAG} $< -o $@
+		${CC} ${LINKERFLAG} -I./ $< -o $@
 %.o: %.cpp
 		@echo "Creating object.."
-		${CC} -c   -std=c++17 $<
+		${CC} -c -std=c++17  $<
 
 clean:
 		@echo "Cleaning up..."
