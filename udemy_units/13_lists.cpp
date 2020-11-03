@@ -4,6 +4,10 @@
 #include <chrono> 
 #include <vector> 
 #include <iomanip>
+#include <iostream>     // std::cout
+#include <iterator>     // std::next
+#include <list>         // std::list
+#include <algorithm>    // std::for_each
 
 
 template <typename T = std::micro> struct Timer{
@@ -42,16 +46,21 @@ template <typename T = std::micro> struct Timer{
       }
     }
 };
-
-void print_container(const std::vector<int>& c) 
-{
-    for (auto &i : c) {
-        std::cout << i << " ";
-    }
-    std::cout << '\n';
+template<typename Container>
+void print(const Container& cont) {
+   for (auto const& x : cont) {
+      std::cout << x << " ";
+   }
+   std::cout << '\n';
 }
 
+
+
+//-------------------------------------------
+
 int main(){
+
+
 	std::cout<<"TicToc!\n";
     Timer<> timer("List vs Array, fill and array performance");
 
@@ -69,11 +78,11 @@ int main(){
 	timer.tick("List fill");
 
 
-	while
-		auto it1 = std::next(num_list.begin(), i);
-		*it1 +=1;
-	}
-	timer.tick("Seq idx List");
+	// while
+	// 	auto it1 = std::next(num_list.begin(), i);
+	// 	*it1 +=1;
+	// }
+	// timer.tick("Seq idx List");
 
 	for (int i = 0; i<vec.size(); i+=20){
 		vec[i] +=1;
