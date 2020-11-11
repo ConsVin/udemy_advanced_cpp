@@ -7,7 +7,7 @@
 CC = gcc                        # compiler to use
 
 LINKERFLAG = -lm
-CXXFLAGS='-std=c++17 -I.'
+CXXFLAGS='-std=c++17'
 
 
 SRCS := $(wildcard *.cpp)
@@ -17,7 +17,7 @@ all: ${BINS}
 
 %: %.o
 		@echo "Checking.."
-		${CC} ${LINKERFLAG} -I./ $< -o $@
+		${CC} ${LINKERFLAG}  $< -o $@
 %.o: %.cpp
 		@echo "Creating object.."
 		${CC} ${CXXFLAGS} -c   $<

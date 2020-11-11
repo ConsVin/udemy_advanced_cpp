@@ -15,6 +15,15 @@ namespace common{
 			
 			double getReal() const { return real; }
             double getImag() const { return imag; }
+
+            const Complex &operator=(const Complex &other);
+            const Complex &operator=(const double  d     );
+            
+            bool operator ==(const Complex &other) const;
+            bool operator !=(const Complex &other) const;
+
+            // Dereference operator overloaded to Conjugated!
+			Complex operator*() const;
 	};
 
 	std::ostream &operator<<(std::ostream&out, const Complex &C);
@@ -22,7 +31,6 @@ namespace common{
 	Complex operator +(const Complex &c1 , const Complex &c2);
 	Complex operator +(const Complex &c1 , double d);
 	Complex operator +(double d          , const Complex &c2);
-
 
 	Complex operator -(const Complex &c1 , const Complex &c2);
 	Complex operator -(const Complex &c1 , double d);
@@ -32,8 +40,10 @@ namespace common{
 	Complex operator *(const Complex &c1 , double d);
 	Complex operator *(double d          , const Complex &c2);
 
+	
 
 
 }
 
 #endif
+

@@ -26,16 +26,26 @@ public:
         return *this;
 	}
 
+	friend std::ostream &operator<<(std::ostream&out, const Hero & H) {
+	    out << "Hero: "<< H.x << "," << H.name;
+        return out;
+    }
+
 };
 
 int main(){
 
-	Hero foo(42, "Herculer");
-	Hero bar(12, "Ayax");
-	Hero zak = foo; // No overloading here
-	bar = "HelloWorld";
-	foo.print();
-	bar.print();
-	zak = bar;
+	Hero foo(42, "Hercules");
+	Hero zak = foo; // Regular assignmnet, not the overloaded
+	
+	// Hero bar = "HelloWorld";  <<<<  Illegal
+	Hero bar; 
+	bar =  "Ayax";  // "Overloaded Assignment from string! \n";
+	
+	zak = bar; //"Overloaded Assignment class to class! \n";
 	zak.print();
+	bar.print();
+
+	std::cout << "-------\n";
+	std::cout <<foo<<"\n"<<bar<<"\n";
 }
