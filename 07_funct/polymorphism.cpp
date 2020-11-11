@@ -21,7 +21,7 @@ class Parent{
  		std::cout<<"Non Virtual function, I'm fine! "<<std::endl;
  	}
 
-	virtual void increment();
+	// virtual void increment();
 
  	virtual ~Parent(){}
 };
