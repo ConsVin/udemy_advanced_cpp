@@ -9,7 +9,6 @@ CC = gcc                        # compiler to use
 LINKERFLAG = -lm
 CXXFLAGS='-std=c++17'
 
-
 SRCS := $(wildcard *.cpp)
 BINS := $(SRCS:%.cpp=%)
 
