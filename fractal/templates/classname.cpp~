@@ -1,0 +1,15 @@
+#include <classname.h>
+#include <iostream>
+
+namespace SPACENAME{
+
+	Classname::Classname(int x):x(x){
+
+	}
+
+
+	Classname::~Classname(){
+
+	}
+	
+} // end of namespace SPACENAME

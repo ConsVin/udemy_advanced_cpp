@@ -36,7 +36,8 @@ int main(){
 
     ZoomList zoom_list(WIDTH,HEIGHT);
     zoom_list.add(Zoom(WIDTH/2, HEIGHT/2, 4.0/WIDTH, 2.0/HEIGHT) );
-    zoom_list.add(Zoom(560 , 123, 1/10.0, 1/10.0 ) );
+
+    zoom_list.add(Zoom(582 , HEIGHT-108, 1/45.0, 1/45.0 ) );
 
     std::unique_ptr<int[]> histogram(new int[Mandelbrot::MAX_ITERATION + 1]{0} );
     std::unique_ptr<int[]>   fractal(new int[WIDTH*HEIGHT]{0} );
@@ -45,14 +46,9 @@ int main(){
     Bitmap bitmap(WIDTH,HEIGHT);
     for (int y=0; y<HEIGHT; y++ ){
         for (int x=0; x<WIDTH; x++ ){
-//            double xFractal = (x -  WIDTH/2.0 -  WIDTH/4.0) * (4.0/WIDTH) ;
-//            double yFractal = (y - HEIGHT/2) * (2.0/HEIGHT)               ;
             std::pair<double,double> coords = zoom_list.doZoom(x,y);
-
             auto n_iter = Mandelbrot::getIterations(coords.first, coords.second);
-            
             fractal[ y*WIDTH + x ] = n_iter;
-            
             if (n_iter != Mandelbrot::MAX_ITERATION) {
                 histogram[n_iter]++;
             }
@@ -80,7 +76,7 @@ int main(){
             if (n_iter!= Mandelbrot::MAX_ITERATION){
                 for (int i=0; i<= n_iter; i++){
                     hue += (double)histogram[i]/(double)total_h;
-                    red   = std::pow(250,hue);
+                    red     = std::pow(250,hue);
                 }
             }
              

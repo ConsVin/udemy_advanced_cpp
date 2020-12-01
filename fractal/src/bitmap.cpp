@@ -48,8 +48,8 @@ namespace fractal{
         uint8_t *pPixel = m_pPixels.get();
         pPixel += ( y * m_width + x ) * 3;
         pPixel[0] = blue;
-        pPixel[1] = red;
-        pPixel[2] = green;
+        pPixel[1] = green ;
+        pPixel[2] = red;
 
         // LittleEndian Format, so inverse order
         //     R  G  B

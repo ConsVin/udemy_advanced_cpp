@@ -1,0 +1,20 @@
+#ifndef CLASSNAME_H
+#define CLASSNAME_H
+
+#include <cstdint> // Uint types
+#include <vector>
+#include <utility> // Pairs
+
+
+namespace SPACENAME{
+
+	class Classname{
+	private:
+		int x;
+	public:
+		Classname(int x):x(x);
+		~Classname();
+	};
+
+} // end of namespace SPACENAME
+#endif // CLASSNAME_H
