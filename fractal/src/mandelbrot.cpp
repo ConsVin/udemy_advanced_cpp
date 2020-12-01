@@ -17,11 +17,11 @@ namespace fractal{
         while(n_iter < MAX_ITERATION){
             z = z*z + c;
             if (abs( z ) > 2){
-                return 128;
+                return n_iter;
             }
             n_iter++;
         }
-        return 16;
+        return n_iter;
     }
 
     Mandelbrot::~Mandelbrot(){

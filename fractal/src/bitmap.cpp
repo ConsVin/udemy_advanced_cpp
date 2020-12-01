@@ -35,7 +35,7 @@ namespace fractal{
 
         file.write((char *)&fileHeader, sizeof(fileHeader));
         file.write((char *)&infoHeader, sizeof(infoHeader));
-        file.write((char *)m_pPixels.get(),  m_width*m_height*3); //  Unique to Raw!
+        file.write((char *)m_pPixels.get(),  m_width*m_height*3 ); //  Unique to Raw!
 
         file.close();
         if (!file){
