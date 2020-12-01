@@ -4,3 +4,5 @@
 ./udemy_units/08_pack_binary
 ./udemy_units/07_file_parser
 ./06_templates/main.x
+*.bmp
+build/
