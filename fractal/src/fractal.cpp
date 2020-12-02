@@ -9,6 +9,7 @@
 #include <mandelbrot.h>
 #include <zoomlist.h>
 #include <fractalcreator.h>
+#include <rgb.h>
 
 using namespace fractal;
 
@@ -28,14 +29,12 @@ auto getField(){
 int main(){
     int const m_width  = 1000;
     int const m_height =  500;
+    
+    rgb_test();
 
+    
     FractalCreator fractal_creator(m_width, m_height);
+    fractal_creator.run("mandelbrot.bmp");
 
-    fractal_creator.addZoom( Zoom(m_width/2, m_height/2, 4.0/m_width, 2.0/m_height) );
-    fractal_creator.addZoom( Zoom(582 , m_height-108, 1/45.0, 1/45.0 ) );
-    fractal_creator.calculateIterations();
-    fractal_creator.calculateTotalIterations();
-    fractal_creator.drawFractal();
-    fractal_creator.writeBitmap("mandelbrot.bmp");
 	return 0;
 }

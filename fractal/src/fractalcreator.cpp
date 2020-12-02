@@ -16,9 +16,15 @@ namespace fractal{
     }
 
 
-	FractalCreator::~FractalCreator(){	
+    void FractalCreator::run(std::string name){
+        addZoom( Zoom(m_width/2, m_height/2, 4.0/m_width, 2.0/m_height) );
+        addZoom( Zoom(582 , m_height-108,        1/45.0, 1/45.0 ) );
+        calculateIterations();
+        calculateTotalIterations();
+        drawFractal();
+        writeBitmap(name);
     }
-
+    
 
     void FractalCreator::calculateIterations(){
                for (int y=0; y<m_height; y++ ){
