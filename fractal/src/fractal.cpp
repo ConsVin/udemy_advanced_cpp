@@ -13,27 +13,17 @@
 
 using namespace fractal;
 
-auto getField(){
-    int const m_width  = 1000;
-    int const m_height =  800;
-    std::unique_ptr<Bitmap>pBitmap {new Bitmap(m_width, m_height)};
-    
-    for (int y=0; y<m_height; y++ )
-        for (int x=0; x<m_width; x++ )
-                pBitmap->setPixel(x,y, 0,0,255); 
-    for (int i=0; i<500; i++){pBitmap->setPixel(i,i, 255,0,0);    }
-    for (int i=0; i<500; i++){pBitmap->setPixel(m_width-i,i, 0,255,0);    }
-    return pBitmap;
-}
-
 int main(){
     int const m_width  = 1000;
     int const m_height =  500;
-    
-    rgb_test();
-
-    
     FractalCreator fractal_creator(m_width, m_height);
+    // TODO: Add checking of these ranges
+    fractal_creator.addRange( 0.0, RGB(200,   0,   0));
+    fractal_creator.addRange(0.02, RGB(  0, 150,   0));
+    fractal_creator.addRange(0.05, RGB( 200,  0,   255));
+    fractal_creator.addRange( 1.0, RGB(  0,   0,  255));
+    // fractal_creator.addRange(0.5, RGB(255, 255, 0));
+    
     fractal_creator.run("mandelbrot.bmp");
 
 	return 0;

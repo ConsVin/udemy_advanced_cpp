@@ -9,7 +9,7 @@ namespace fractal{
 	private:
 
 	public:
-		static const int MAX_ITERATION = 500;
+		static const int MAX_ITERATION = 1000;
 
 	public:
 		static int   getIterations(double x, double y);

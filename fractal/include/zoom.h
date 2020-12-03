@@ -13,11 +13,20 @@ namespace fractal{
 		double scale_y{0.0};
 
 		Zoom(int x, int y, double scale_x, double scale_y): 
-		x(x),
-		y(y),
-		scale_x(scale_x),
-		scale_y(scale_y)
-		{};
+			x(x),
+			y(y),
+			scale_x(scale_x),
+			scale_y(scale_y)
+			{};
+
+		Zoom(int x, int y,  double scale): 
+			x(x),
+			y(y),
+			scale_x(scale),
+			scale_y(scale)
+			{};
+
+
 	};
 }
 

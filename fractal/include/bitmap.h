@@ -3,6 +3,7 @@
 #include <cstdint> // Uint types
 #include <string>
 #include <memory>
+#include <rgb.h>
 
 namespace fractal{
 
@@ -18,6 +19,7 @@ namespace fractal{
 						 	uint8_t red,
 							uint8_t green, 
 							uint8_t blue  );
+		void setPixel(int x, int y, RGB & color );
 
 		bool write(std::string filename);
 

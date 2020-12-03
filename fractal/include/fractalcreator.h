@@ -13,7 +13,7 @@
 #include <bitmap.h>
 #include <mandelbrot.h>
 #include <zoomlist.h>
-
+#include <rgb.h>
 
 
 namespace fractal{
@@ -27,18 +27,28 @@ namespace fractal{
 		std::unique_ptr<int[]>   m_fractal;
 	    ZoomList m_zoom_list;
 		Bitmap        m_bitmap;
+		std::vector<int> m_ranges;
+		std::vector<RGB> m_rgb;
+		std::vector<int> m_ranges_totals;
+		bool m_bGotFirstRange{false};
+
 	private:
 		
 		void calculateIterations();
 		void calculateTotalIterations();
+		void calculateRangeTotals();
+
 		void drawFractal();
-		void addZoom(const Zoom& zoom);
 		void writeBitmap(std::string name);
+		int getRange( int iters) const;
+		int get_m_fractal_iter(int x, int y);
+		void set_m_fractal_iter(int x, int y, int n_iter);
+
 	public:
 		FractalCreator(int w, int h);
+		void addRange(double rangeEnd, const RGB& rgb);
+		void addZoom(const Zoom& zoom);
 		void run(std::string name);
-	
-
 	};
 
 } // end of namespace fractal

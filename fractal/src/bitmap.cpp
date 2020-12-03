@@ -50,12 +50,15 @@ namespace fractal{
         pPixel[0] = blue;
         pPixel[1] = green ;
         pPixel[2] = red;
-
-        // LittleEndian Format, so inverse order
-        //     R  G  B
-        //  0x FF 88 33
     }
 
+    void  Bitmap::setPixel( int x,  int y,  RGB & color ){
+        uint8_t *pPixel = m_pPixels.get();
+        pPixel += ( y * m_width + x ) * 3;
+        pPixel[0] = color.b;
+        pPixel[1] = color.g;
+        pPixel[2] = color.r;
+    }
 
     Bitmap::~Bitmap(){
     }

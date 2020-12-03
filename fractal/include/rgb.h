@@ -21,6 +21,7 @@ namespace fractal{
 	
 	RGB operator -(const RGB& first, const RGB& second);
 
+	RGB linear_interpolation( const RGB& color_start, const RGB& color_end, double alpha);
 	void rgb_test();
 
 } // end of namespace fractal

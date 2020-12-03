@@ -14,9 +14,6 @@ namespace fractal{
 			m_yCenter += ( zoom.y - m_height/2)*m_scale_y;
 			m_scale_x   *=   zoom.scale_x;
 			m_scale_y   *=   zoom.scale_y;
-			
-			std::cout<< zoom.x    << " , "  << zoom.y << " , " <<  zoom.scale_x << " , " <<  zoom.scale_y << " \n ";
-			std::cout<< m_xCenter << " , "  << m_yCenter << " , " <<  m_scale_x << " , " <<  m_scale_y<< " \n ";
 		}
 
 		std::pair<double,double> ZoomList::doZoom(int x, int y){
