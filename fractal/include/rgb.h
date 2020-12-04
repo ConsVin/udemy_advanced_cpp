@@ -24,5 +24,10 @@ namespace fractal{
 	RGB linear_interpolation( const RGB& color_start, const RGB& color_end, double alpha);
 	void rgb_test();
 
+	const auto clr_orange  = RGB( 255,   153,   51  ); // clr_orange
+	const auto clr_yellow  = RGB( 255,   255,   51  ); // clr_yellow
+	const auto clr_green   = RGB( 153,   255,   51  ); // clr_green
+	const auto clr_blue    = RGB(  51,   255,   255 ); // clr_blue
+
 } // end of namespace fractal
 #endif // RGB_H

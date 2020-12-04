@@ -19,19 +19,15 @@ namespace fractal{
 
     void FractalCreator::run(std::string name){
         
-        addRange( 0.0, RGB(200,   0,   0  ));
-        addRange(0.02, RGB(  0, 150,   0  ));
-        addRange(0.05, RGB( 200,  0,   255));
-        addRange( 1.0, RGB(  0,   0,   255));
+        auto normal_zoom = Zoom(m_width/2, m_height/2, 4.0/m_width, 2.0/m_height);
+        addZoom( normal_zoom );
+        auto ne_corner_of_the_lake = Zoom(0.582*m_width , 0.784*m_height, 1/10.0);
+        addZoom( ne_corner_of_the_lake);
+        setPalette( { clr_orange, clr_blue , clr_yellow, clr_green });
         
-        // Normal zoom, to fit the full fractal
-        addZoom( Zoom(m_width/2, m_height/2, 4.0/m_width, 2.0/m_height) );
-        // NE corner of the "main lake"
-        addZoom( Zoom(0.582*m_width , 0.784*m_height, 1/25.0));
-
-
         calculateIterations();
         calculateTotalIterations();
+        allocatePaletteRanges();
         calculateRangeTotals();
         drawFractal();
         writeBitmap(name);
@@ -100,6 +96,26 @@ namespace fractal{
     void FractalCreator::addZoom(const Zoom& zoom){
         m_zoom_list.add(zoom);
     }
+    void FractalCreator::setPalette(std::vector<RGB> palette){
+        m_palette = palette;
+    }
+
+    void FractalCreator::allocatePaletteRanges( ){
+        auto n_ranges = m_palette.size();
+        auto range_size  = m_total_h / n_ranges;
+        int sum = 0;
+        int range_cnt = 0;
+        for (int i=0; i< Mandelbrot::MAX_ITERATION; i++){
+            sum += m_histogram[i];
+            if (sum > range_size){
+                addRange( i, m_palette[ range_cnt]);
+                range_cnt++;
+                sum = 0;
+            }
+        }
+        addRange(  Mandelbrot::MAX_ITERATION , m_palette[range_cnt]);
+    }
+
     void FractalCreator::calculateRangeTotals(){
         int rangeIndex = 0;
 
@@ -112,8 +128,9 @@ namespace fractal{
         }
     }
 
-    void FractalCreator::addRange(double rangeEnd, const RGB& rgb){
-        m_ranges.push_back( (int)(rangeEnd * Mandelbrot::MAX_ITERATION ));
+    void FractalCreator::addRange(int rangeEnd, const RGB& rgb){
+        fprintf(stdout, "Add Range %d \n",rangeEnd);
+        m_ranges.push_back( rangeEnd );
         m_rgb.push_back(rgb);
         if (m_bGotFirstRange){
             m_ranges_totals.push_back(0);
